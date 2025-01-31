@@ -2,7 +2,11 @@
 import { useState } from "react";
 import CreateShape from "./CreateShape";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import {
+  faAngleLeft,
+  faAngleRight,
+  faUndo,
+} from "@fortawesome/free-solid-svg-icons";
 import { createRandomParticle } from "./simulation";
 
 type ControlPanelProps = {
@@ -14,6 +18,7 @@ type ControlPanelProps = {
   toggleWrap: (value: boolean) => void;
   createCircle: (radius: number) => void;
   createRectangle: (width: number, height: number) => void;
+  removeLastParticle: () => void;
 };
 
 const ControlPanel = ({
@@ -25,6 +30,7 @@ const ControlPanel = ({
   toggleWrap,
   createCircle,
   createRectangle,
+  removeLastParticle,
 }: ControlPanelProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -126,6 +132,17 @@ const ControlPanel = ({
             createCircle={createCircle}
             createRectangle={createRectangle}
           />
+        </div>
+
+        <div className="flex justify-end">
+          <button
+            className="bg-red-600 w-12 h-12 rounded-xl centered hover:bg-red-400 transition-colors duration-300 active:scale-95 mt-4"
+            onClick={() => {
+              removeLastParticle();
+            }}
+          >
+            <FontAwesomeIcon icon={faUndo} />
+          </button>
         </div>
       </div>
     </>

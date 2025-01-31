@@ -288,6 +288,12 @@ const Simulation = ({
     World.add(engine.world, rectangle);
   };
 
+  const removeLastParticle = () => {
+    if (particles.length > 0) {
+      World.remove(engine.world, particles.pop()!);
+    }
+  };
+
   return (
     <>
       <div className={`h-screen text-colors-text ${style}`} ref={scene}></div>
@@ -300,6 +306,7 @@ const Simulation = ({
         toggleWrap={updateWrap}
         createCircle={createCircle}
         createRectangle={createRectangle}
+        removeLastParticle={removeLastParticle}
       />
     </>
   );
