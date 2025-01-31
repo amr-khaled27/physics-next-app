@@ -17,12 +17,14 @@ import {
 } from "../utils/simulationUtils";
 
 const particles: Matter.Body[] = [];
+const stepsHistory: number[] = [];
 
 export const createRandomParticle = (
   scene: React.RefObject<HTMLDivElement | null>,
   engine: Matter.Engine,
   count: number
 ) => {
+  stepsHistory.push(count);
   for (let i = 0; i < count; i++) {
     const x = Math.random() * scene.current!.clientWidth;
     const y = Math.random() * scene.current!.clientHeight;
@@ -250,6 +252,7 @@ const Simulation = ({
   };
 
   const createCircle = (radius: number) => {
+    stepsHistory.push(1);
     const x = Math.random() * scene.current!.clientWidth;
     const y = Math.random() * scene.current!.clientHeight;
     const color = `hsl(${Math.random() * 360}, 100%, 50%)`;
@@ -271,6 +274,7 @@ const Simulation = ({
   };
 
   const createRectangle = (width: number, height: number) => {
+    stepsHistory.push(1);
     const x = Math.random() * scene.current!.clientWidth;
     const y = Math.random() * scene.current!.clientHeight;
     const color = `hsl(${Math.random() * 360}, 100%, 50%)`;
@@ -292,8 +296,14 @@ const Simulation = ({
   };
 
   const removeLastParticle = () => {
-    if (particles.length > 0) {
-      World.remove(engine.world, particles.pop()!);
+    const steps = stepsHistory.pop();
+    if (steps !== undefined) {
+      for (let i = 0; i < steps; i++) {
+        const particle = particles.pop();
+        if (particle) {
+          World.remove(engine.world, particle);
+        }
+      }
     }
   };
 
