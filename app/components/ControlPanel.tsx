@@ -131,7 +131,7 @@ const ControlPanel = ({
           </div>
         </div>
 
-        <div className="z-10">
+        <div>
           <button
             title={isOpen ? "Close panel" : "Open panel"}
             onClick={clickHandler}
