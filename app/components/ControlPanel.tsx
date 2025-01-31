@@ -7,7 +7,7 @@ import {
   faAngleRight,
   faUndo,
 } from "@fortawesome/free-solid-svg-icons";
-import { createRandomParticle } from "./simulation";
+import CreateRandom from "./CreateRandom";
 
 type ControlPanelProps = {
   scene: React.RefObject<HTMLDivElement | null>;
@@ -65,12 +65,8 @@ const ControlPanel = ({
         </button>
 
         <div className="flex flex-col gap-4">
-          <button
-            className="bg-slate-600 p-4 rounded-xl w-full hover:bg-slate-400 transition-colors duration-300 active:scale-95"
-            onClick={() => createRandomParticle(scene, engine)}
-          >
-            create random particle
-          </button>
+          <p className="text-center">Create Random Particles</p>
+          <CreateRandom scene={scene} engine={engine} />
 
           <div className="flex flex-col">
             <p className="text-center">Set Gravity</p>

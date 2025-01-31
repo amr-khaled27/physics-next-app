@@ -20,31 +20,34 @@ const particles: Matter.Body[] = [];
 
 export const createRandomParticle = (
   scene: React.RefObject<HTMLDivElement | null>,
-  engine: Matter.Engine
+  engine: Matter.Engine,
+  count: number
 ) => {
-  const x = Math.random() * scene.current!.clientWidth;
-  const y = Math.random() * scene.current!.clientHeight;
-  const radius = Math.random() * 10 + 5;
-  const sides = Math.floor(Math.random() * 3) + 3;
-  const angle = Math.random() * Math.PI * 2;
-  const color = `hsl(${Math.random() * 360}, 100%, 50%)`;
+  for (let i = 0; i < count; i++) {
+    const x = Math.random() * scene.current!.clientWidth;
+    const y = Math.random() * scene.current!.clientHeight;
+    const radius = Math.random() * 10 + 5;
+    const sides = Math.floor(Math.random() * 3) + 3;
+    const angle = Math.random() * Math.PI * 2;
+    const color = `hsl(${Math.random() * 360}, 100%, 50%)`;
 
-  const particle = Bodies.polygon(x, y, sides, radius, {
-    angle: angle,
-    frictionAir: 0,
-    force: {
-      x: (Math.random() - 0.5) * 0.002,
-      y: (Math.random() - 0.5) * 0.002,
-    },
-    render: {
-      fillStyle: color,
-    },
-    restitution: 0.5,
-  });
+    const particle = Bodies.polygon(x, y, sides, radius, {
+      angle: angle,
+      frictionAir: 0,
+      force: {
+        x: (Math.random() - 0.5) * 0.002,
+        y: (Math.random() - 0.5) * 0.002,
+      },
+      render: {
+        fillStyle: color,
+      },
+      restitution: 0.5,
+    });
 
-  particles.push(particle);
+    particles.push(particle);
 
-  World.add(engine.world, particle);
+    World.add(engine.world, particle);
+  }
 };
 
 interface SimulationProps {
