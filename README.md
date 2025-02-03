@@ -26,9 +26,8 @@ A physics simulation app built using **Matter.js**. The app provides a simple in
 ## Technologies Used
 
 - **Matter.js**: A 2D physics engine for the web, used for collision detection, gravity, and object interactions.
-- **HTML5 Canvas**: For rendering the simulation visually in the browser.
-- **JavaScript**: For app logic, event handling, and interaction with Matter.js.
-
+- **TypeScript**: The app is built with **TypeScript**, providing strong typing and enhanced development experience.
+  
 ## Future Features (Planned)
 
 - **Save and Load Simulation**: Save the current state of the simulation and load it later.
