@@ -13,14 +13,16 @@ A physics simulation app built using **Matter.js**. The app provides a simple in
    - Great for testing large-scale particle systems or visual effects.
 
 ### 3. **Create Other Shapes**
-   - Users can create not just circles, but also squares, triangles, and custom polygonal shapes.
+   - Users can create not just circles, but also squares.
    - These shapes can be dynamically resized and placed in the simulation.
 
 ### 4. **Undo Button**
    - Allows users to revert any unwanted changes or actions.
-   - Whether it's adding a new particle or adjusting settings, the undo feature offers flexibility and control over the simulation.
      
-### 5. **Mobile Friendly**
+### 5. **Responsive Canvas**
+   - Simulation canvas is responsive to resizing.
+     
+### 6. **Mobile Friendly**
   - The app is fully optimized for mobile devices, providing a smooth and responsive experience.
 
 ## Technologies Used
